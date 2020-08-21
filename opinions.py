@@ -2,9 +2,9 @@ import csv
 import pandas as pd
 from textblob import TextBlob
 
-inputFile = "timSmithToClean.csv"
-Stage1File = "timSmithCleaned.csv"
-Stage2File = "timSmithSentimentApplied.csv"
+inputFile = "biden200820_230001.csv"
+Stage1File = "biden200820_230001leaned.csv"
+Stage2File = "biden200820_230001SentimentApplied.csv"
 
 df = pd.read_csv(inputFile,engine='python')
 
@@ -28,9 +28,6 @@ df['tweet'] = df['tweet'].str.replace(')', '')
 #Removing line breaks. REF https://stackoverflow.com/questions/44227748/removing-newlines-from-messy-strings-in-pandas-dataframe-cells
 df = df.replace('\n','', regex=True)
 
-DFList = []
-for group in df.groupby(df.index.date):
-    DFList.append(group[1])
 
 
 #Export cleaned dataframe to CSV.
